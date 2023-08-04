@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+
+{% block body %}
+    {% if entry == none %}
+        <h1 style="text-align: center; font-size: 90px;">404 NOT FOUND</h1>
+    {% else %}
+        {{ entry | safe }}
+
+        <a href="{% url 'encyclopedia:edit' title %}">Edit</a>
+    {% endif %}
+
+{% endblock %}

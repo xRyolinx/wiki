@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit: {{ title }}
+{% endblock %}
+
+
+{% block body %}
+    {% if entry == none %}
+        <h1 style="text-align: center; font-size: 90px;">404 NOT FOUND</h1>
+    {% else %}
+        <form action="{% url 'encyclopedia:edit' title %}" method="post">
+            {% csrf_token %}
+            <h1>Edit: {{ title }}</h1>
+            <input name="title" type="hidden" value="{{ title }}">
+            <textarea name="content" id="" cols="30" rows="10">
+                {{ entry }}
+            </textarea>
+            <button style="display:block" type="submit">Save changes</button>
+        </form>
+    {% endif %}
+
+{% endblock %}
